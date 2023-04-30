@@ -3,7 +3,8 @@ version: "3.7"
 services:
   solar-system:
     build:
-      context: ./
+      context: ../
       dockerfile: ./Dockerfile
     ports:
       - 62393:80
+    restart: always

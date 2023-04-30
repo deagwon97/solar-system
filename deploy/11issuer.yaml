@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: solar-system-issuer
+  namespace: solar-system
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    # server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: azaz09112@naver.com
+    privateKeySecretRef:
+      name: solar-system-issuer
+    solvers:
+    - http01:
+        ingress:
+           class: traefik-cert-manager

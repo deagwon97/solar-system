@@ -1,0 +1,35 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingressroute-solar-system-redirect
+  namespace: solar-system
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`solarsystem.deagwon.com`)
+      kind: Rule
+      services:
+        - name: solar-system
+          port: 80
+      middlewares:
+        - name: redirectscheme
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingressroute-solar-system
+  namespace: solar-system
+  annotations:
+    cert-manager.io/issuer: solar-system-issuer
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`solarsystem.deagwon.com`)
+      kind: Rule
+      services:
+        - name: solar-system
+          port: 80
+  tls:
+    secretName: solar-system-crt-secret

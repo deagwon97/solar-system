@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: solar-system
+  name: solar-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: solar-system
+  template:
+    metadata:
+      labels:
+        app: solar-system
+    spec:
+      containers:
+      - name: solar-system
+        image: harbor.deagwon.com/solar-system/solar-system:latest
+        imagePullPolicy: Always
+        ports:
+          - name: web
+            containerPort: 80
+      serviceAccountName: solar-system-regcred 
+      imagePullSecrets:
+        - name: solar-system-regcred 

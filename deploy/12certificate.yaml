@@ -1,0 +1,12 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: solar-system-certificate
+  namespace: solar-system
+spec:
+  secretName: solar-system-crt-secret
+  dnsNames:
+    - solarsystem.deagwon.com
+  issuerRef:
+    name: solar-system-issuer
+    kind: Issuer
