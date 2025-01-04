@@ -2,8 +2,6 @@
 - Web GL을 활용한 태양계 구성
 - ReactJS, ThreeJS
 
-- demo: <a href="https://solarsystem.deagwon.com">solarsystem.deagwon.com</a>
-
 <img src="./solar-system.png">
 
 
